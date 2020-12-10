@@ -1,0 +1,33 @@
+<mvc:View controllerName="kpmg.home.exercise4.controller.detail" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="Details">
+					<content>
+						<VBox fitContainer="true">
+
+							<List headerText="Details">
+								<InputListItem label="FullName">
+									<Input value="{singersModel>FullName}"/>
+								</InputListItem>
+								<InputListItem label="Genre">
+									<Input value="{singersModel>Genre}"/>
+								</InputListItem>
+								<InputListItem label="Nationality">
+									<Input value="{singersModel>Nationality}"/>
+								</InputListItem>
+								<InputListItem label="Age">
+									<Input value="{singersModel>Age}"/>
+								</InputListItem>
+								<!--<StandardListItem title="{singersModel>FullName}"/>-->
+								<!--<StandardListItem title="{singersModel>Genre}"/>-->
+								<!--<StandardListItem title="{singersModel>Nationality}"/>-->
+								<!--<StandardListItem title="{singersModel>Age}"/>-->
+							</List>
+						</VBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

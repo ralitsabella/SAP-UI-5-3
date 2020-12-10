@@ -1,0 +1,28 @@
+<mvc:View controllerName="kpmg.home.exercise4.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="Singers">
+					<content>
+						<VBox fitContainer="true">
+							<Table id="singerTable" inset="false" items="{ path: 'singersModel>/SingersSet'}" class="sapFDynamicPageAlignContent" width="auto">
+								<columns>
+									<Column width="12em">
+										<Text text="Singer"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press=".onPress">
+										<cells>
+											<ObjectIdentifier title="{singersModel>StageName}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</VBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

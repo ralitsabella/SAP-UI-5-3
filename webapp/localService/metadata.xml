@@ -1,0 +1,65 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZKPMGIFY_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Singers" sap:content-version="1">
+				<Key><PropertyRef Name="StageName"/></Key><Property Name="StageName" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Stage Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FullName" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Full Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Genre" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Music Genre" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Nationality" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Nationality"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Age" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Age" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToSongs" Relationship="ZKPMGIFY_SRV.Singers_Songs" FromRole="FromRole_Singers_Songs" ToRole="ToRole_Singers_Songs"/></EntityType>
+			<EntityType Name="Songs" sap:content-version="1">
+				<Key><PropertyRef Name="SongName"/></Key><Property Name="SongName" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Song Title"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="StageName" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Stage Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Album" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Album Title" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Syear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Song's Year" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZC_ZSINGERType" sap:label="Consumption Singer" sap:content-version="1">
+				<Key><PropertyRef Name="Singer"/></Key><Property Name="Singer" Type="Edm.String" Nullable="false" MaxLength="60" sap:display-format="UpperCase" sap:label="Stage Name"/><Property Name="FullName" Type="Edm.String" MaxLength="100" sap:display-format="UpperCase" sap:label="Full Name"/><Property Name="Genre" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Music Genre"/><Property Name="Nationality" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Nationality"/><Property Name="Age" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Age"/><NavigationProperty Name="to_songs" Relationship="ZKPMGIFY_SRV.assoc_C4E2819836CFC5CDCD0581C46B8D596B"
+					FromRole="FromRole_assoc_C4E2819836CFC5CDCD0581C46B8D596B" ToRole="ToRole_assoc_C4E2819836CFC5CDCD0581C46B8D596B"/></EntityType>
+			<EntityType Name="ZC_ZSONGType" sap:label="Consumption Song" sap:content-version="1">
+				<Key><PropertyRef Name="Song"/><PropertyRef Name="Singer"/></Key><Property Name="Song" Type="Edm.String" Nullable="false" MaxLength="100" sap:display-format="UpperCase" sap:label="Song Title"/><Property Name="Singer" Type="Edm.String" Nullable="false" MaxLength="60" sap:display-format="UpperCase" sap:label="Stage Name"/><Property Name="Album" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Album Title"/><Property Name="YearReleased" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Song's Year"/></EntityType>
+			<ComplexType Name="SingerCheck"><Property Name="Exists" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Singer Check" sap:creatable="false"
+				sap:updatable="false" sap:sortable="false" sap:filterable="false"/></ComplexType>
+			<Association Name="assoc_C4E2819836CFC5CDCD0581C46B8D596B" sap:content-version="1"><End Type="ZKPMGIFY_SRV.ZC_ZSINGERType" Multiplicity="1" Role="FromRole_assoc_C4E2819836CFC5CDCD0581C46B8D596B"/><End Type="ZKPMGIFY_SRV.ZC_ZSONGType" Multiplicity="*" Role="ToRole_assoc_C4E2819836CFC5CDCD0581C46B8D596B"/></Association>
+			<Association Name="Singers_Songs" sap:content-version="1"><End Type="ZKPMGIFY_SRV.Singers" Multiplicity="1" Role="FromRole_Singers_Songs"/><End Type="ZKPMGIFY_SRV.Songs" Multiplicity="*" Role="ToRole_Singers_Songs"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Singers_Songs"><PropertyRef Name="StageName"/></Principal>
+					<Dependent Role="ToRole_Singers_Songs"><PropertyRef Name="StageName"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZKPMGIFY_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true"
+				sap:supported-formats="atom json xlsx"><EntitySet Name="ZC_ZSINGER" EntityType="ZKPMGIFY_SRV.ZC_ZSINGERType" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:content-version="1"/><EntitySet Name="ZC_ZSONG" EntityType="ZKPMGIFY_SRV.ZC_ZSONGType" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:content-version="1"/><EntitySet Name="SingersSet" EntityType="ZKPMGIFY_SRV.Singers" sap:searchable="true" sap:content-version="1"/><EntitySet Name="SongsSet" EntityType="ZKPMGIFY_SRV.Songs" sap:searchable="true" sap:content-version="1"/>
+				<AssociationSet Name="Singers_SongsSet" Association="ZKPMGIFY_SRV.Singers_Songs" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="SingersSet" Role="FromRole_Singers_Songs"/><End EntitySet="SongsSet" Role="ToRole_Singers_Songs"/></AssociationSet>
+				<AssociationSet Name="assoc_C4E2819836CFC5CDCD0581C46B8D596B" Association="ZKPMGIFY_SRV.assoc_C4E2819836CFC5CDCD0581C46B8D596B"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_ZSINGER" Role="FromRole_assoc_C4E2819836CFC5CDCD0581C46B8D596B"/><End EntitySet="ZC_ZSONG" Role="ToRole_assoc_C4E2819836CFC5CDCD0581C46B8D596B"/></AssociationSet>
+				<FunctionImport Name="SingerCheck" ReturnType="ZKPMGIFY_SRV.SingerCheck" m:HttpMethod="POST" sap:action-for="ZKPMGIFY_SRV.Singers"><Parameter Name="Singer" Type="Edm.String" Mode="In"/></FunctionImport>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZKPMGIFY_SRV.ZKPMGIFY_SRV_Entities">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZKPMGIFY_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZKPMGIFY_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
